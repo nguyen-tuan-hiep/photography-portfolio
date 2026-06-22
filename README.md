@@ -56,6 +56,7 @@ RLS only grants anonymous database reads for public albums. The exact `/albums/[
 
 ## Commands
 
+- `npx prettier . --write` — format code
 - `npm run dev` — local development
 - `npm run build` — production build
 - `npm run typecheck` — TypeScript validation

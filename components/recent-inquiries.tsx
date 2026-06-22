@@ -52,7 +52,7 @@ export function RecentInquiries({
       }
 
       setInquiries((current) =>
-        current.filter((item) => item.id !== inquiry.id)
+        current.filter((item) => item.id !== inquiry.id),
       );
 
       setTarget(null);

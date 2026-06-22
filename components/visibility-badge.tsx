@@ -1,2 +1,16 @@
 import type { Visibility } from "@/lib/types";
-export function VisibilityBadge({ visibility }: { visibility: Visibility }) { const style = visibility === "public" ? "bg-emerald-100 text-emerald-800" : visibility === "unlisted" ? "bg-amber-100 text-amber-800" : "bg-neutral-200 text-neutral-600"; return <span className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${style}`}>{visibility}</span>; }
+export function VisibilityBadge({ visibility }: { visibility: Visibility }) {
+  const style =
+    visibility === "public"
+      ? "bg-emerald-100 text-emerald-800"
+      : visibility === "unlisted"
+        ? "bg-amber-100 text-amber-800"
+        : "bg-neutral-200 text-neutral-600";
+  return (
+    <span
+      className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${style}`}
+    >
+      {visibility}
+    </span>
+  );
+}

@@ -1,4 +1,42 @@
 import { Navbar } from "@/components/navbar";
 import { BookingForm } from "@/components/booking-form";
 export const metadata = { title: "Book a Shoot" };
-export default async function BookPage({ searchParams }: { searchParams: Promise<{ type?: string }> }) { const { type } = await searchParams; return <main><div className="relative bg-ink pb-16 pt-24 text-white"><Navbar/><div className="container-page pt-20"><p className="eyebrow !text-white/50">Work together</p><h1 className="mt-3 font-serif text-7xl sm:text-9xl">Tell me everything.</h1></div></div><section className="container-page grid gap-16 py-20 lg:grid-cols-[.7fr_1.3fr] lg:py-28"><div><p className="eyebrow">The beginning</p><h2 className="mt-4 font-serif text-4xl">Let’s talk about what you’re imagining.</h2><p className="mt-6 text-sm leading-7 text-neutral-600">Share a few details below. I typically reply within two business days with availability and a tailored collection.</p><a className="mt-7 block text-sm underline underline-offset-4" href="mailto:hiep454546@gmail.com">hiep454546@gmail.com</a></div><BookingForm defaultType={type}/></section></main>; }
+export default async function BookPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string }>;
+}) {
+  const { type } = await searchParams;
+  return (
+    <main>
+      <div className="relative bg-ink pb-16 pt-24 text-white">
+        <Navbar />
+        <div className="container-page pt-20">
+          <p className="eyebrow !text-white/50">Work together</p>
+          <h1 className="mt-3 font-serif text-7xl sm:text-9xl">
+            Tell me everything.
+          </h1>
+        </div>
+      </div>
+      <section className="container-page grid gap-16 py-20 lg:grid-cols-[.7fr_1.3fr] lg:py-28">
+        <div>
+          <p className="eyebrow">The beginning</p>
+          <h2 className="mt-4 font-serif text-4xl">
+            Let’s talk about what you’re imagining.
+          </h2>
+          <p className="mt-6 text-sm leading-7 text-neutral-600">
+            Share a few details below. I typically reply within two business
+            days with availability and a tailored collection.
+          </p>
+          <a
+            className="mt-7 block text-sm underline underline-offset-4"
+            href="mailto:hiep454546@gmail.com"
+          >
+            hiep454546@gmail.com
+          </a>
+        </div>
+        <BookingForm defaultType={type} />
+      </section>
+    </main>
+  );
+}

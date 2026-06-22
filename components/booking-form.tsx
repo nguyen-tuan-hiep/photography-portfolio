@@ -84,21 +84,25 @@ export function BookingForm({ defaultType = "" }: { defaultType?: string }) {
         Shoot type
         <select className="field" name="shoot_type" defaultValue={defaultType}>
           <option value="">Select one</option>
-          {["Wedding", "Birthday", "Portrait", "Graduation", "Event", "Other"].map(
-            (x) => (
-              <option key={x} value={x}>
-                {x}
-              </option>
-            )
-          )}
+          {[
+            "Wedding",
+            "Birthday",
+            "Portrait",
+            "Graduation",
+            "Event",
+            "Other",
+          ].map((x) => (
+            <option key={x} value={x}>
+              {x}
+            </option>
+          ))}
         </select>
       </label>
-
 
       <TimePickerField name="start_time" label="Start time" />
 
       <TimePickerField name="end_time" label="End time" />
-      
+
       <DatePickerField name="preferred_date" label="Preferred date" />
 
       <label className="text-xs uppercase tracking-wider sm:col-span-2">

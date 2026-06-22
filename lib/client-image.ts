@@ -4,8 +4,13 @@ const MAX_DIMENSION = 4000;
 export async function optimizeForCloudinary(file: File) {
   if (file.size <= TARGET_SIZE) return file;
 
-  const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" });
-  const scale = Math.min(1, MAX_DIMENSION / Math.max(bitmap.width, bitmap.height));
+  const bitmap = await createImageBitmap(file, {
+    imageOrientation: "from-image",
+  });
+  const scale = Math.min(
+    1,
+    MAX_DIMENSION / Math.max(bitmap.width, bitmap.height),
+  );
   const canvas = document.createElement("canvas");
   canvas.width = Math.round(bitmap.width * scale);
   canvas.height = Math.round(bitmap.height * scale);
@@ -20,12 +25,16 @@ export async function optimizeForCloudinary(file: File) {
   let quality = 0.88;
   let blob: Blob | null = null;
   do {
-    blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg", quality));
+    blob = await new Promise((resolve) =>
+      canvas.toBlob(resolve, "image/jpeg", quality),
+    );
     quality -= 0.1;
   } while (blob && blob.size > TARGET_SIZE && quality >= 0.48);
 
   if (!blob || blob.size > TARGET_SIZE) {
-    throw new Error(`${file.name} could not be reduced below Cloudinary's 10 MB limit.`);
+    throw new Error(
+      `${file.name} could not be reduced below Cloudinary's 10 MB limit.`,
+    );
   }
   return new File([blob], file.name.replace(/\.[^.]+$/, ".jpg"), {
     type: "image/jpeg",
