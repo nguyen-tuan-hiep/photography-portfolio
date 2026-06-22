@@ -4,7 +4,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { DesktopTimePicker } from "@mui/x-date-pickers/DesktopTimePicker";
 
 export function TimePickerField({
   name,
@@ -22,11 +22,13 @@ export function TimePickerField({
       {label}
 
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <TimePicker
+        <DesktopTimePicker
           value={value}
+          minutesStep={15}
+          skipDisabled
           onChange={(newValue) => setValue(newValue)}
           minTime={minTime ?? undefined}
-          ampm={false}
+          // ampm={false}
           format="HH:mm"
           slotProps={{
             field: {

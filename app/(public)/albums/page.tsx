@@ -19,7 +19,7 @@ export default async function AlbumsPage() {
       </div>
       <section className="container-page py-20 sm:py-28">
         {albums.length ? (
-          <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {albums.map((a, i) => (
               <AlbumCard key={a.id} album={a} priority={i < 3} />
             ))}

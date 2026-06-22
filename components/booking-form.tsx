@@ -116,20 +116,20 @@ export function BookingForm({ defaultType = "" }: { defaultType?: string }) {
 				</div>
 			</label>
 
-			<TimePickerField
-				name="start_time"
-				label="Start time"
-			/>
-
-			<TimePickerField
-				name="end_time"
-				label="End time"
-			/>
-
 			<DatePickerField
 				name="preferred_date"
 				label="Preferred date"
 			/>
+			<div className="grid min-w-0 grid-cols-2 gap-4">
+				<TimePickerField
+					name="start_time"
+					label="Start time"
+				/>
+        <TimePickerField
+					name="end_time"
+					label="End time"
+				/>
+			</div>
 
 			<label className="block min-w-0 text-xs uppercase tracking-wider sm:col-span-2">
 				Tell me about it

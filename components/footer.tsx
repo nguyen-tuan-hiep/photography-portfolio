@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container-page flex flex-col justify-between gap-10 sm:flex-row sm:items-end">
         <div>
           <p className="font-serif text-3xl">Hiep Studio</p>
-          <p className="mt-3 max-w-sm text-xs leading-6 text-white/55">
+          <p className="mt-3 sm:max-w-sm md:max-w-md lg:max-w-lg 2xl:max-w-xl text-xs leading-6 text-white/55">
             Thoughtful photography for people who want to remember how it felt.
           </p>
         </div>

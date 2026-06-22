@@ -20,7 +20,7 @@ export default async function Dashboard() {
           New album
         </Link>
       </div>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-10 grid gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         {Object.entries(counts).map(([label, count]) => (
           <div key={label} className="border border-neutral-200 bg-white p-6">
             <p className="text-xs uppercase tracking-wider text-neutral-500">
