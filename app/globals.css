@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: #f5f3ee; color: #11110f; transition: background-color 250ms ease, color 250ms ease; }
+::selection { background: #11110f; color: #f5f3ee; }
+.container-page { @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12; }
+.eyebrow { @apply text-[10px] font-semibold uppercase tracking-[0.28em] text-neutral-500; }
+.button-dark { @apply inline-flex min-h-12 items-center justify-center bg-ink px-7 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-50; }
+.button-light { @apply inline-flex min-h-12 items-center justify-center border border-ink px-7 text-xs font-semibold uppercase tracking-[0.16em] transition hover:bg-ink hover:text-white; }
+.field { @apply w-full border-b border-neutral-400 bg-transparent px-0 py-3 text-sm outline-none transition placeholder:text-neutral-400 focus:border-ink; }
+
+@keyframes toast-in { from { opacity: 0; transform: translate3d(24px, -8px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes toast-out { from { opacity: 1; transform: translate3d(0, 0, 0); } to { opacity: 0; transform: translate3d(24px, -8px, 0); } }
+@keyframes toast-progress { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+.toast-in { animation: toast-in 300ms cubic-bezier(.2,.8,.2,1) both; }
+.toast-out { animation: toast-out 250ms ease-in both; }
+.toast-progress { animation-name: toast-progress; animation-timing-function: linear; animation-fill-mode: both; }
+@media (prefers-reduced-motion: reduce) { .toast-in, .toast-out, .toast-progress { animation: none; } }
+
+.dark { color-scheme: dark; }
+.dark body { background: #10100f; color: #f1f0ec; }
+.dark .bg-white { background-color: #181816; }
+.dark .bg-paper { background-color: #141413; }
+.dark [class~="bg-[#f7f7f5]"] { background-color: #10100f; }
+.dark [class~="bg-[#dedbd2]"] { background-color: #24231f; }
+.dark .bg-neutral-50, .dark .hover\:bg-neutral-50:hover { background-color: #1b1b19; }
+.dark .bg-neutral-100, .dark .hover\:bg-neutral-100:hover { background-color: #242421; }
+.dark .bg-neutral-200 { background-color: #33332f; }
+.dark .bg-emerald-100 { background-color: #15372b; }
+.dark .bg-amber-100 { background-color: #44351a; }
+.dark .text-emerald-800 { color: #9ee5c6; }
+.dark .text-amber-800 { color: #f3d28c; }
+.dark .text-ink { color: #f1f0ec; }
+.dark .text-neutral-400 { color: #99978f; }
+.dark .text-neutral-500 { color: #aaa89f; }
+.dark .text-neutral-600 { color: #c1beb5; }
+.dark .border-neutral-200 { border-color: #343430; }
+.dark .border-neutral-300, .dark .border-neutral-400 { border-color: #4a4944; }
+.dark .divide-y > :not([hidden]) ~ :not([hidden]) { border-color: #343430; }
+.dark .field { border-color: #55534d; color: #f1f0ec; }
+.dark .field:focus { border-color: #f1f0ec; }
+.dark .field option { background: #181816; color: #f1f0ec; }
+.dark .button-dark { background-color: #f1f0ec; color: #11110f; }
+.dark .button-dark:hover { background-color: #d6d3ca; }
+.dark .button-light { border-color: #e4e1d9; color: #f1f0ec; }
+.dark .button-light:hover { background-color: #f1f0ec; color: #11110f; }
+.dark .ring-offset-2 { --tw-ring-offset-color: #181816; }

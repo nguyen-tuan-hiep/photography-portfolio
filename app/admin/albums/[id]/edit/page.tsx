@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { AlbumForm } from "@/components/album-form";
+import { ImageUploader } from "@/components/image-uploader";
+import { Toast } from "@/components/toast";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
+import type { Album } from "@/lib/types";
+export default async function EditAlbum({ params, searchParams }: { params: Promise<{id:string}>; searchParams: Promise<{created?:string;duplicateName?:string;slug?:string}> }) { const [{id},query]=await Promise.all([params,searchParams]);if(!isSupabaseConfigured())notFound();const supabase=await createClient();const {data}=await supabase.from("albums").select("*, album_images(*)").eq("id",id).order("display_order",{referencedTable:"album_images"}).single();if(!data)notFound();const album=data as Album;return <main className="p-5 sm:p-8 lg:p-12">{query.duplicateName==="1"?<Toast variant="warning" message={`An album with this name already exists. This album was created with the URL /albums/${query.slug||album.slug}.`}/>:query.created==="1"?<Toast variant="success" message="Album created successfully. You can now upload photographs and choose a cover image."/>:null}<Link href="/admin/albums" className="text-xs underline">← Back to albums</Link><div className="mt-10"><p className="eyebrow">Edit collection</p><h1 className="mt-2 font-serif text-5xl">{album.title}</h1></div><div className="mt-10 grid gap-8 xl:grid-cols-[minmax(0,2fr)_minmax(420px,1fr)]"><div className="order-2 border border-neutral-200 bg-white p-6 sm:p-10 xl:order-1"><ImageUploader album={album}/></div><div className="order-1 border border-neutral-200 bg-white p-6 sm:p-10 xl:order-2"><AlbumForm album={album}/></div></div></main>; }
