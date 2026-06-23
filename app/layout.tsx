@@ -4,8 +4,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
 	title: {
-		default: "Hiep Studio — Photography",
-		template: "%s — Tuan Hiep Studio",
+		default: "Frames by Hiep",
+		template: "%s — Tuan Hiep Photography",
 	},
 	description: "Honest, artful photography for life's most meaningful moments.",
 };
