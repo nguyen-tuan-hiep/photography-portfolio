@@ -125,7 +125,7 @@ export function BookingForm({ defaultType = "" }: { defaultType?: string }) {
 					name="start_time"
 					label="Start time"
 				/>
-        <TimePickerField
+				<TimePickerField
 					name="end_time"
 					label="End time"
 				/>

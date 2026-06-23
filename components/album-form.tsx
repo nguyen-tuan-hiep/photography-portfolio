@@ -43,24 +43,34 @@ export function AlbumForm({ album }: { album?: Album }) {
             Public URL: /albums/{slug || "your-album"}
           </span>
         </label>
-        <label className="text-xs uppercase tracking-wider">
+        <label className="block min-w-0 text-xs uppercase tracking-wider">
           Category
-          <select
-            className="field"
-            name="category"
-            defaultValue={album?.category || "Portrait"}
-          >
-            {[
-              "Wedding",
-              "Birthday",
-              "Portrait",
-              "Graduation",
-              "Event",
-              "Other",
-            ].map((x) => (
-              <option key={x}>{x}</option>
-            ))}
-          </select>
+          <div className="relative mt-1 min-w-0">
+            <select
+              className="field w-full max-w-full min-w-0 appearance-none pr-12"
+              name="category"
+              defaultValue={album?.category || "Portrait"}
+            >
+              {[
+                "Wedding",
+                "Birthday",
+                "Portrait",
+                "Graduation",
+                "Event",
+                "Other",
+              ].map((x) => (
+                <option
+                  key={x}
+                  value={x}
+                >
+                  {x}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-lg">
+              ⌄
+            </span>
+          </div>
         </label>
         <label className="text-xs uppercase tracking-wider">
           Shoot date
@@ -71,17 +81,22 @@ export function AlbumForm({ album }: { album?: Album }) {
             defaultValue={album?.shoot_date || ""}
           />
         </label>
-        <label className="text-xs uppercase tracking-wider">
+        <label className="block min-w-0 text-xs uppercase tracking-wider">
           Visibility
-          <select
-            className="field"
-            name="visibility"
-            defaultValue={album?.visibility || "draft"}
-          >
-            <option value="draft">Draft</option>
-            <option value="unlisted">Unlisted</option>
-            <option value="public">Public</option>
-          </select>
+          <div className="relative mt-1 min-w-0">
+            <select
+              className="field w-full max-w-full min-w-0 appearance-none pr-12"
+              name="visibility"
+              defaultValue={album?.visibility || "draft"}
+            >
+              <option value="draft">Draft</option>
+              <option value="unlisted">Unlisted</option>
+              <option value="public">Public</option>
+            </select>
+            <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-lg">
+              ⌄
+            </span>
+          </div>
         </label>
         <label className="text-xs uppercase tracking-wider sm:col-span-2">
           Description
