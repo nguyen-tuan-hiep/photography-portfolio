@@ -63,7 +63,7 @@ export function MasonryGallery({
     <>
       <Masonry
         columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
-        spacing={{ xs: 3, sm: 4, md: 6, lg: 8 }}
+        spacing={{ xs: 3, sm: 4, md: 5, lg: 5 }}
         defaultColumns={1}
         defaultSpacing={0}
       >
