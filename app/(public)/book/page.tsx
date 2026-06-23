@@ -1,23 +1,39 @@
-import { Navbar } from "@/components/navbar";
+import Image from "next/image";
 import { BookingForm } from "@/components/booking-form";
+import { Navbar } from "@/components/navbar";
+import { getSiteSettings } from "@/lib/data";
+
 export const metadata = { title: "Book a Shoot" };
+
 export default async function BookPage({
   searchParams,
 }: {
   searchParams: Promise<{ type?: string }>;
 }) {
   const { type } = await searchParams;
+  const settings = await getSiteSettings();
+
   return (
     <main>
-      <div className="relative bg-ink pb-16 pt-24 text-white">
+      <section className="relative h-[60svh] bg-black text-white">
+        <Image
+          src={settings.hero_image_url}
+          alt="Booking hero"
+          fill
+          priority
+          className="object-cover object-[80%_center] opacity-75 sm:object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         <Navbar />
-        <div className="container-page pt-20">
-          <p className="eyebrow !text-white/50">Work together</p>
-          <h1 className="mt-3 font-serif text-7xl sm:text-9xl">
+
+        <div className="container-page relative flex h-[60svh] flex-col justify-end pb-10 pt-28 sm:pb-16 sm:pt-32">
+          <p className="eyebrow !text-white/70">Work together</p>
+          <h1 className="mt-4 max-w-5xl font-serif text-[clamp(4rem,12vw,7rem)] leading-[0.85] tracking-[-0.04em]">
             Tell me everything.
           </h1>
         </div>
-      </div>
+      </section>
+
       <section className="container-page grid gap-16 py-20 lg:grid-cols-[.7fr_1.3fr] lg:py-28">
         <div>
           <p className="eyebrow">The beginning</p>

@@ -12,20 +12,20 @@ export default async function Home() {
 	]);
 	return (
 		<main>
-			<section className="relative min-h-[70svh] bg-black text-white">
+			<section className="relative h-[60svh] bg-black text-white">
 				<Image
 					src={settings.hero_image_url}
 					alt="Homepage hero"
 					fill
 					priority
-					className="object-cover opacity-75"
+					className="object-cover object-[80%_center] opacity-75 sm:object-center"
 				/>
 
 				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
 				<Navbar />
 
-				<div className="container-page relative flex min-h-[70svh] flex-col justify-end pb-10 pt-28 sm:pb-16 sm:pt-32">
+				<div className="container-page relative flex h-[60svh] flex-col justify-end pb-10 pt-28 sm:pb-16 sm:pt-32">
 					<p className="eyebrow !text-white/70">{settings.hero_eyebrow}</p>
 
 					<h1 className="mt-4 max-w-5xl font-serif text-[clamp(4rem,12vw,7rem)] leading-[0.85] tracking-[-0.04em]">

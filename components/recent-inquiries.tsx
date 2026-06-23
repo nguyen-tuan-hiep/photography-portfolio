@@ -112,7 +112,7 @@ export function RecentInquiries({
         </span>
       </div>
 
-      <div className="mt-8 grid gap-4 xl:grid-cols-2">
+      <div className="mt-8 grid gap-4 lg:grid-cols-2">
         {inquiries.map((inquiry) => {
           const initials = inquiry.name
             .split(/\s+/)
@@ -135,15 +135,15 @@ export function RecentInquiries({
           return (
             <article
               key={inquiry.id}
-              className="group relative border border-neutral-200 bg-neutral-50 p-5 transition hover:border-neutral-400 sm:p-6"
+              className="group relative min-w-0 overflow-hidden border border-neutral-200 bg-neutral-50 p-5 transition hover:border-neutral-400 sm:p-6"
             >
-              <div className="flex items-start gap-4 pr-9">
-                <div className="grid size-11 shrink-0 place-items-center rounded-full bg-ink font-serif text-lg text-white">
+              <div className="flex min-w-0 items-start gap-4 pr-9">
+                <div className="grid size-11 shrink-0 place-items-center rounded-full bg-ink font-serif text-lg text-white dark:bg-white dark:text-ink">
                   {initials}
                 </div>
 
                 <div className="min-w-0 flex-1">
-                  <h3 className="truncate font-serif text-2xl leading-none">
+                  <h3 className="break-words font-serif text-2xl leading-none">
                     {inquiry.name}
                   </h3>
 
@@ -167,10 +167,10 @@ export function RecentInquiries({
               <div className="mt-5 grid gap-3 text-xs text-neutral-600 sm:grid-cols-2">
                 <a
                   href={`mailto:${inquiry.email}`}
-                  className="flex min-w-0 items-center gap-2 hover:text-ink"
+                  className="flex min-w-0 items-start gap-2 break-words hover:text-ink"
                 >
                   <Mail size={14} className="shrink-0" />
-                  <span className="truncate">{inquiry.email}</span>
+                  <span className="min-w-0 break-words">{inquiry.email}</span>
                 </a>
 
                 {whatsappNumber && (
@@ -178,22 +178,24 @@ export function RecentInquiries({
                     href={`https://wa.me/${whatsappNumber}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex min-w-0 items-center gap-2 hover:text-ink"
+                    className="flex min-w-0 items-start gap-2 break-words hover:text-ink"
                   >
                     <MessageCircle size={14} className="shrink-0" />
-                    <span className="truncate">{whatsappDisplay}</span>
+                    <span className="min-w-0 break-words">
+                      {whatsappDisplay}
+                    </span>
                   </a>
                 )}
 
                 {inquiry.preferred_date && (
-                  <span className="flex items-center gap-2">
+                  <span className="flex min-w-0 items-center gap-2 break-words">
                     <CalendarDays size={14} className="shrink-0" />
                     {formatDate(inquiry.preferred_date)}
                   </span>
                 )}
 
                 {timeRange && (
-                  <span className="flex items-center gap-2">
+                  <span className="flex min-w-0 items-center gap-2 break-words">
                     <Clock3 size={14} className="shrink-0" />
                     {timeRange}
                   </span>
@@ -201,8 +203,8 @@ export function RecentInquiries({
               </div>
 
               {inquiry.message && (
-                <div className="mt-5 border-l-2 border-neutral-300 pl-4">
-                  <p className="text-sm leading-6 text-neutral-600">
+                <div className="mt-5 min-w-0 border-l-2 border-neutral-300 pl-4">
+                  <p className="break-words text-sm leading-6 text-neutral-600">
                     {inquiry.message}
                   </p>
                 </div>

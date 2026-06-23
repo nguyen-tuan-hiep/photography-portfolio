@@ -8,7 +8,7 @@ export default function LoginPage() {
         <ThemeToggle inverted />
       </div>
       <div className="w-full max-w-md bg-paper p-8 sm:p-12">
-        <p className="eyebrow">Tuan Hiep Studio</p>
+        <p className="eyebrow">Frames by Hiep</p>
         <h1 className="mt-3 font-serif text-5xl">Welcome back.</h1>
         <p className="mt-4 text-sm text-neutral-600">
           Sign in to manage your portfolio.

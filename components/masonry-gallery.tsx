@@ -1,7 +1,8 @@
 "use client";
 
+import Masonry from "@mui/lab/Masonry";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import type { AlbumImage } from "@/lib/types";
 import { Lightbox } from "./lightbox";
 
@@ -49,38 +50,6 @@ export function MasonryGallery({
   title: string;
 }) {
   const [active, setActive] = useState<number | null>(null);
-  const [columnCount, setColumnCount] = useState(1);
-
-  useEffect(() => {
-    const updateColumns = () => {
-      const width = window.innerWidth;
-      setColumnCount(
-        width >= 1536
-          ? 5
-          : width >= 1024
-            ? 4
-            : width >= 768
-              ? 3
-              : width >= 520
-                ? 2
-                : 1,
-      );
-    };
-    updateColumns();
-    window.addEventListener("resize", updateColumns);
-    return () => window.removeEventListener("resize", updateColumns);
-  }, []);
-
-  const columns = useMemo(() => {
-    const result = Array.from(
-      { length: columnCount },
-      () => [] as { image: AlbumImage; index: number }[],
-    );
-    images.forEach((image, index) =>
-      result[index % columnCount].push({ image, index }),
-    );
-    return result;
-  }, [images, columnCount]);
 
   if (!images.length) {
     return (
@@ -92,29 +61,22 @@ export function MasonryGallery({
 
   return (
     <>
-      <div
-        className="grid items-start gap-6 md:gap-8 lg:gap-10 2xl:gap-12"
-        style={{
-          gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
-        }}
+      <Masonry
+        columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
+        spacing={{ xs: 3, sm: 4, md: 6, lg: 8 }}
+        defaultColumns={1}
+        defaultSpacing={0}
       >
-        {columns.map((column, columnIndex) => (
-          <div
-            key={columnIndex}
-            className="space-y-6 md:space-y-8 lg:space-y-10 2xl:space-y-12"
-          >
-            {column.map(({ image, index }) => (
-              <MasonryImage
-                key={image.id}
-                image={image}
-                index={index}
-                title={title}
-                onOpen={() => setActive(index)}
-              />
-            ))}
-          </div>
+        {images.map((image, index) => (
+          <MasonryImage
+            key={image.id}
+            image={image}
+            index={index}
+            title={title}
+            onOpen={() => setActive(index)}
+          />
         ))}
-      </div>
+      </Masonry>
       {active !== null && (
         <Lightbox
           images={images}

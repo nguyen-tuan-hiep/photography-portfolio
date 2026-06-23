@@ -1,22 +1,36 @@
+import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { AlbumCard } from "@/components/album-card";
-import { getPublicAlbums } from "@/lib/data";
+import { getPublicAlbums, getSiteSettings } from "@/lib/data";
 
 export const metadata = { title: "Albums" };
 export default async function AlbumsPage() {
-  const albums = await getPublicAlbums();
+  const [albums, settings] = await Promise.all([
+    getPublicAlbums(),
+    getSiteSettings(),
+  ]);
   return (
     <main>
-      <div className="relative bg-ink pb-20 pt-24 text-white">
+      <section className="relative h-[60svh] bg-black text-white">
+        <Image
+          src={settings.hero_image_url}
+          alt="Albums hero"
+          fill
+          priority
+          className="object-cover object-[80%_center] opacity-75 sm:object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         <Navbar />
-        <div className="container-page pt-20">
-          <p className="eyebrow !text-white/50">The archive</p>
-          <h1 className="mt-3 font-serif text-7xl sm:text-9xl">Stories</h1>
-          <p className="mt-7 max-w-md text-sm leading-7 text-white/60">
+        <div className="container-page relative flex h-[60svh] flex-col justify-end pb-10 pt-28 sm:pb-16 sm:pt-32">
+          <p className="eyebrow !text-white/70">The archive</p>
+          <h1 className="mt-4 max-w-5xl font-serif text-[clamp(4rem,12vw,7rem)] leading-[0.85] tracking-[-0.04em]">
+            Stories
+          </h1>
+          <p className="mt-6 max-w-md text-sm leading-7 text-white/70">
             Weddings, milestones, and honest portraits of lives in motion.
           </p>
         </div>
-      </div>
+      </section>
       <section className="container-page py-20 sm:py-28">
         {albums.length ? (
           <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
